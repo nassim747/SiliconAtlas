@@ -1,0 +1,16 @@
+# RootAISpec  – Silicon Atlas
+stack: Vite + React 18 + TypeScript + Tailwind + Visx + D3
+folder-layout:
+  src/
+    components/
+    hooks/
+    data/
+    pages/
+  public/
+conventions:
+  • Use functional React components with named exports.
+  • State lives in Zustand; avoid Redux.
+  • Tailwind class order → “padding->layout->color->motion”.
+  • Dates stored as ISO-8601 strings.
+  • Each component gets a `<name>.test.tsx` with RTL + Vitest.
+eslint: use Airbnb + Prettier.
