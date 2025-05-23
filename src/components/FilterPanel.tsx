@@ -32,7 +32,7 @@ const FilterPanel = () => {
     }
   }
 
-  const getCategoryColor = (category: string, index: number) => {
+  const getCategoryColor = (_category: string, index: number) => {
     const colors = [
       'bg-blue-100 text-blue-700 border-blue-200',
       'bg-purple-100 text-purple-700 border-purple-200',
