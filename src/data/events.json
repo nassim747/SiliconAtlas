@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "title": "First Transistor Invented",
+    "description": "Bell Labs scientists John Bardeen, Walter Brattain, and William Shockley invented the first working transistor, revolutionizing electronics.",
+    "date": "1947-12-23",
+    "category": "Hardware",
+    "impact": "high",
+    "tags": ["transistor", "bell-labs", "electronics"],
+    "source": "Bell Labs",
+    "url": "https://example.com/transistor"
+  },
+  {
+    "id": "2", 
+    "title": "Intel 4004 Microprocessor Released",
+    "description": "Intel released the 4004, the first commercially available microprocessor, marking the beginning of the microcomputer revolution.",
+    "date": "1971-11-15",
+    "category": "Processors",
+    "impact": "high",
+    "tags": ["intel", "microprocessor", "4004"],
+    "source": "Intel Corporation",
+    "url": "https://example.com/intel-4004"
+  },
+  {
+    "id": "3",
+    "title": "Apple II Computer Launch",
+    "description": "Apple Computer Company launched the Apple II, one of the first successful mass-produced personal computers.",
+    "date": "1977-06-10",
+    "category": "Personal Computing",
+    "impact": "high",
+    "tags": ["apple", "personal-computer", "apple-ii"],
+    "source": "Apple Computer Company",
+    "url": "https://example.com/apple-ii"
+  }
+] 
