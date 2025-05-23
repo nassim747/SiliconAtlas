@@ -190,6 +190,32 @@ const Timeline = () => {
           {renderEventList()}
         </div>
 
+        {/* Footer */}
+        <footer className="bg-white/80 backdrop-blur-sm border-t border-gray-200/50 mt-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="text-center">
+              <p className="text-gray-600 mb-2">
+                Created by{''}
+                <a 
+                  href="https://www.linkedin.com/in/nassim-a-265944286/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    font-semibold text-blue-600 hover:text-blue-700 
+                    transition-colors duration-200 
+                    hover:underline decoration-2 underline-offset-2
+                  "
+                >
+                  Nassim Ameur
+                </a>
+              </p>
+              <p className="text-sm text-gray-500">
+                Discover the pivotal moments that shaped technology
+              </p>
+            </div>
+          </div>
+        </footer>
+
         {/* Floating Search Button - appears when search bar is hidden */}
         {!isSearchVisible && (
           <button

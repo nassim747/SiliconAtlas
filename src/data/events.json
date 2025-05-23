@@ -8,7 +8,7 @@
     "impact": "high",
     "tags": ["transistor", "bell-labs", "electronics"],
     "source": "Bell Labs",
-    "url": "https://example.com/transistor"
+    "url": "https://en.wikipedia.org/wiki/Point-contact_transistor"
   },
   {
     "id": "2", 
@@ -19,7 +19,7 @@
     "impact": "high",
     "tags": ["intel", "microprocessor", "4004"],
     "source": "Intel Corporation",
-    "url": "https://example.com/intel-4004"
+    "url": "https://en.wikipedia.org/wiki/Intel_4004"
   },
   {
     "id": "3",
@@ -30,6 +30,6 @@
     "impact": "high",
     "tags": ["apple", "personal-computer", "apple-ii"],
     "source": "Apple Computer Company",
-    "url": "https://example.com/apple-ii"
+    "url": "https://en.wikipedia.org/wiki/Apple_II"
   }
 ] 
