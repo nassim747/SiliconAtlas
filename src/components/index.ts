@@ -1,2 +1,5 @@
 // Components index - placeholder file to ensure Git tracks the directory
-export {}; 
+export { default as Timeline } from './Timeline'
+export { default as SearchBar } from './SearchBar'
+export { default as FilterPanel } from './FilterPanel'
+export { default as EventCard } from './EventCard' 
