@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { Event } from '../types/Event'
 import { useTimelineStore } from '../store/timelineStore'
 import SearchBar from './SearchBar'
@@ -15,10 +15,50 @@ const Timeline = () => {
     setSelectedEvent
   } = useTimelineStore()
 
+  // Scroll state for hiding/showing search bar
+  const [isSearchVisible, setIsSearchVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
   // Load events data on component mount
   useEffect(() => {
     setEvents(eventsData as Event[])
   }, [setEvents])
+
+  // Scroll detection for search bar visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      const scrollThreshold = 100 // Only start hiding after scrolling 100px
+      
+      if (currentScrollY < scrollThreshold) {
+        // Always show at the top
+        setIsSearchVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+        // Scrolling down - hide search bar
+        setIsSearchVisible(false)
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show search bar
+        setIsSearchVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    // Throttle scroll events for performance
+    let ticking = false
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledScroll)
+  }, [lastScrollY])
 
   const renderEventList = () => {
     if (filteredEvents.length === 0) {
@@ -101,9 +141,9 @@ const Timeline = () => {
       
       <div className="relative">
         {/* Header */}
-        <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-40">
+        <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-40 transition-all duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="py-6">
+            <div className={`transition-all duration-300 ${isSearchVisible ? 'py-6' : 'py-4'}`}>
               <div className="text-center mb-8">
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   Silicon Atlas
@@ -113,7 +153,15 @@ const Timeline = () => {
                 </p>
               </div>
               
-              <SearchBar />
+              <div className={`
+                overflow-hidden transition-all duration-500 ease-in-out
+                ${isSearchVisible 
+                  ? 'max-h-32 opacity-100 transform translate-y-0' 
+                  : 'max-h-0 opacity-0 transform -translate-y-4'
+                }
+              `}>
+                <SearchBar />
+              </div>
             </div>
           </div>
         </div>
@@ -141,6 +189,30 @@ const Timeline = () => {
           {/* Events Display */}
           {renderEventList()}
         </div>
+
+        {/* Floating Search Button - appears when search bar is hidden */}
+        {!isSearchVisible && (
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              setIsSearchVisible(true)
+            }}
+            className="
+              fixed bottom-6 right-6 z-50
+              bg-blue-600 hover:bg-blue-700 text-white
+              w-14 h-14 rounded-full shadow-2xl shadow-blue-500/25
+              flex items-center justify-center
+              transition-all duration-300 ease-out
+              hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/40
+              animate-in slide-in-from-bottom-8
+            "
+            title="Search events"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        )}
 
         {/* Event Modal/Detail */}
         {selectedEvent && (
