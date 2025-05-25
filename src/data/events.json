@@ -11,7 +11,7 @@
     "url": "https://en.wikipedia.org/wiki/Point-contact_transistor"
   },
   {
-    "id": "2", 
+    "id": "2",
     "title": "Intel 4004 Microprocessor Released",
     "description": "Intel released the 4004, the first commercially available microprocessor, marking the beginning of the microcomputer revolution.",
     "date": "1971-11-15",
@@ -31,5 +31,192 @@
     "tags": ["apple", "personal-computer", "apple-ii"],
     "source": "Apple Computer Company",
     "url": "https://en.wikipedia.org/wiki/Apple_II"
+  },
+  {
+    "id": "4",
+    "title": "Apple II Computer Launch",
+    "description": "Apple Computer Company launched the Apple II, one of the first successful mass-produced personal computers.",
+    "date": "1977-06-10",
+    "category": "Personal Computing",
+    "impact": "high",
+    "tags": ["apple", "personal-computer", "apple-ii"],
+    "source": "Apple Computer Company",
+    "url": "https://en.wikipedia.org/wiki/Apple_II"
+  },
+  {
+    "id": "5",
+    "title": "China Launches 'Made in China 2025'",
+    "description": "Beijing unveils a 10-year plan to achieve chip self-sufficiency and climb the manufacturing value chain.",
+    "date": "2015-05-19",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["china", "industrial-policy", "strategy"],
+    "source": "State Council of the People's Republic of China",
+    "url": "https://english.www.gov.cn/policies/latest_releases/2015/05/19/content_281475110703534.htm"
+  },
+  {
+    "id": "6",
+    "title": "U.S. Blocks Broadcom–Qualcomm Deal",
+    "description": "President Trump blocks Broadcom's $117 bn hostile takeover of Qualcomm on national-security grounds, marking a new era of CFIUS activism.",
+    "date": "2018-03-12",
+    "category": "M&A",
+    "impact": "high",
+    "tags": ["CFIUS", "acquisition", "qualcomm", "broadcom"],
+    "source": "U.S. Executive Order",
+    "url": "https://corpgov.law.harvard.edu/2018/04/03/broadcoms-blocked-acquisition-of-qualcomm/"
+  },
+  {
+    "id": "7",
+    "title": "Huawei Added to U.S. Entity List",
+    "description": "Commerce Department blacklists Huawei and 68 affiliates, cutting off access to U.S. chips and software.",
+    "date": "2019-05-16",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["huawei", "entity-list", "us-policy"],
+    "source": "U.S. Federal Register",
+    "url": "https://www.federalregister.gov/documents/2019/05/21/2019-10616/addition-of-entities-to-the-entity-list"
+  },
+  {
+    "id": "8",
+    "title": "ASML EUV Export License to China Frozen",
+    "description": "Dutch government, under U.S. pressure, halts ASML’s first EUV lithography shipment to China, denying access to leading-edge tooling.",
+    "date": "2019-06-01",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["asml", "euv", "netherlands", "china"],
+    "source": "IEP@Bocconi",
+    "url": "https://iep.unibocconi.eu/why-asml-eus-most-important-bargaining-chip"
+  },
+  {
+    "id": "9",
+    "title": "COVID-19 Triggers Global Chip Shortage",
+    "description": "Pandemic demand spikes and supply disruptions create the worst semiconductor shortage in decades, affecting 169 industries worldwide.",
+    "date": "2020-03-01",
+    "category": "Supply Chain",
+    "impact": "high",
+    "tags": ["covid-19", "supply-chain", "chip-shortage"],
+    "source": "Various Industry Reports",
+    "url": "https://en.wikipedia.org/wiki/2020%E2%80%932023_global_chip_shortage"
+  },
+  {
+    "id": "10",
+    "title": "TSMC Announces $12 Bn Arizona Fab",
+    "description": "World’s top foundry commits to its first advanced-node fab in the U.S., kick-starting American on-shoring efforts.",
+    "date": "2020-05-15",
+    "category": "Manufacturing",
+    "impact": "high",
+    "tags": ["tsmc", "arizona", "fab"],
+    "source": "TSMC Press Release",
+    "url": "https://pr.tsmc.com/english/news/2033"
+  },
+  {
+    "id": "11",
+    "title": "SMIC Added to U.S. Entity List",
+    "description": "Washington blacklists China’s leading foundry, cutting it off from advanced U.S. equipment and technology.",
+    "date": "2020-12-18",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["smic", "entity-list", "export-controls"],
+    "source": "U.S. Federal Register",
+    "url": "https://www.federalregister.gov/documents/2020/12/22/2020-28031/addition-of-entities-to-the-entity-list-revision-of-entry-on-the-entity-list-and-removal-of-entities"
+  },
+  {
+    "id": "12",
+    "title": "TSMC–Sony Announce Kumamoto Fab (JASM)",
+    "description": "Japan offers subsidies for a joint specialty process fab, marking its return to front-end manufacturing.",
+    "date": "2021-11-09",
+    "category": "Manufacturing",
+    "impact": "high",
+    "tags": ["tsmc", "sony", "japan", "kumamoto"],
+    "source": "TSMC Press Release",
+    "url": "https://pr.tsmc.com/english/news/2880"
+  },
+  {
+    "id": "13",
+    "title": "Intel Unveils $20 Bn Ohio Mega-Fab",
+    "description": "Intel announces two new fabs in Ohio as the centerpiece of its IDM 2.0 foundry strategy.",
+    "date": "2022-01-21",
+    "category": "Manufacturing",
+    "impact": "high",
+    "tags": ["intel", "ohio", "manufacturing"],
+    "source": "Intel Press Release",
+    "url": "https://www.intc.com/news-events/press-releases/detail/1521/intel-announces-next-us-site-with-landmark-investment-in"
+  },
+  {
+    "id": "14",
+    "title": "Nvidia–Arm $40 Bn Deal Collapses",
+    "description": "Regulatory pushback forces Nvidia to abandon its takeover of Arm, averting major consolidation in chip IP.",
+    "date": "2022-02-07",
+    "category": "M&A",
+    "impact": "high",
+    "tags": ["nvidia", "arm", "antitrust"],
+    "source": "Nvidia Press Release",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-and-softbank-group-announce-termination-of-nvidias-acquisition-of-arm-limited"
+  },
+  {
+    "id": "15",
+    "title": "U.S. CHIPS and Science Act Signed",
+    "description": "Creates $52.7 bn in incentives for domestic semiconductor R&D and manufacturing.",
+    "date": "2022-08-09",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["chips-act", "industrial-policy", "united-states"],
+    "source": "U.S. Congress",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+  },
+  {
+    "id": "16",
+    "title": "U.S. Issues Sweeping China Chip Export Controls",
+    "description": "Commerce Department bars advanced AI chips and 14 nm-and-below fab tools from reaching China.",
+    "date": "2022-10-07",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["export-controls", "china", "us-policy"],
+    "source": "U.S. BIS",
+    "url": "https://www.bis.doc.gov/index.php/documents/about-bis/newsroom/press-releases/3158-2022-10-07-bis-press-release-advanced-computing-and-semiconductor-manufacturing-controls-final/file"
+  },
+  {
+    "id": "17",
+    "title": "UK Orders Nexperia to Sell Newport Wafer Fab",
+    "description": "Using its new National Security & Investment Act, Britain forces Chinese-owned Nexperia to divest the country’s largest chip plant.",
+    "date": "2022-11-16",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["uk", "nexperia", "national-security"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/uk-orders-chinas-nexperia-sell-least-86-microchip-factory-2022-11-16/"
+  },
+  {
+    "id": "18",
+    "title": "Netherlands Joins U.S.–Japan Export-Control Pact",
+    "description": "Dutch government aligns with allies to curb advanced DUV/EUV lithography exports to China.",
+    "date": "2023-03-08",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["netherlands", "export-controls", "asml"],
+    "source": "CSIS",
+    "url": "https://www.csis.org/analysis/japan-and-netherlands-announce-plans-new-export-controls-semiconductor-equipment"
+  },
+  {
+    "id": "19",
+    "title": "Ukraine War Halts Half of World Neon Supply",
+    "description": "Invasion disrupts neon gas output vital for lithography lasers, highlighting raw-material vulnerabilities.",
+    "date": "2022-03-11",
+    "category": "Supply Chain",
+    "impact": "high",
+    "tags": ["neon", "ukraine", "materials"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/exclusive-ukraine-halts-half-worlds-neon-output-chips-clouding-outlook-2022-03-11/"
+  },
+  {
+    "id": "20",
+    "title": "TSMC Breaks Ground on 3rd Arizona Fab (2 nm Class)",
+    "description": "TSMC expands its Phoenix campus to six fabs and over $165 bn in investment, anchoring U.S.-Taiwan foundry ties.",
+    "date": "2025-05-02",
+    "category": "Manufacturing",
+    "impact": "high",
+    "tags": ["tsmc", "arizona", "2nm"],
+    "source": "Arizona Family News",
+    "url": "https://www.azfamily.com/2025/04/29/tsmc-breaks-ground-third-facility-north-phoenix/"
   }
-] 
+]
