@@ -34,17 +34,226 @@
   },
   {
     "id": "4",
-    "title": "Apple II Computer Launch",
-    "description": "Apple Computer Company launched the Apple II, one of the first successful mass-produced personal computers.",
-    "date": "1977-06-10",
-    "category": "Personal Computing",
+    "title": "SMIC Founded in Shanghai",
+    "description": "Semiconductor Manufacturing International Corporation (SMIC) is established, laying the foundation for mainland China's foundry sector.",
+    "date": "2000-04-03",
+    "category": "Foundry",
     "impact": "high",
-    "tags": ["apple", "personal-computer", "apple-ii"],
-    "source": "Apple Computer Company",
-    "url": "https://en.wikipedia.org/wiki/Apple_II"
+    "tags": ["smic", "foundry", "china"],
+    "source": "SMIC",
+    "url": "https://en.wikipedia.org/wiki/Semiconductor_Manufacturing_International_Corporation"
   },
   {
     "id": "5",
+    "title": "First 300 mm Wafer Fab Begins Production",
+    "description": "Infineon and Philips open Fab 300 in Dresden, ushering in the 300 mm wafer era that slashes cost-per-chip.",
+    "date": "2000-11-17",
+    "category": "Manufacturing",
+    "impact": "medium",
+    "tags": ["300mm", "infineon", "philips", "dresden"],
+    "source": "Infineon Technologies",
+    "url": "https://en.wikipedia.org/wiki/300_mm_wafer"
+  },
+  {
+    "id": "6",
+    "title": "China Joins World Trade Organization",
+    "description": "China's WTO accession accelerates global electronics off-shoring and positions the country as the world's factory for PCs and smartphones.",
+    "date": "2001-12-11",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["china", "wto", "globalization"],
+    "source": "World Trade Organization",
+    "url": "https://www.wto.org/english/thewto_e/acc_e/a1_chine_e.htm"
+  },
+  {
+    "id": "7",
+    "title": "AMD Launches Opteron – 64-bit x86 Debut",
+    "description": "AMD releases the Opteron server CPU, bringing 64-bit computing to the x86 ecosystem and challenging Intel's dominance.",
+    "date": "2003-04-22",
+    "category": "Processors",
+    "impact": "high",
+    "tags": ["amd", "opteron", "64-bit"],
+    "source": "AMD",
+    "url": "https://en.wikipedia.org/wiki/Opteron"
+  },
+  {
+    "id": "8",
+    "title": "ASML Introduces First Immersion Lithography Tool",
+    "description": "ASML debuts the TWINSCAN XT:1250i 193 nm immersion scanner, unlocking 45 nm-class optical scaling.",
+    "date": "2003-12-03",
+    "category": "Equipment",
+    "impact": "high",
+    "tags": ["asml", "immersion-lithography", "scanner"],
+    "source": "ASML Holding NV",
+    "url": "https://www.asml.com/en/news/press-releases/2003/asml-introduces-industry-first-immersion-lithography-tool"
+  },
+  {
+    "id": "9",
+    "title": "SMIC Raises $1.8 Bn in Dual-Listing IPO",
+    "description": "SMIC's Hong Kong and NYSE debut provides crucial capital for China's catch-up drive.",
+    "date": "2004-12-15",
+    "category": "Finance",
+    "impact": "medium",
+    "tags": ["smic", "ipo", "finance"],
+    "source": "SMIC",
+    "url": "https://www.scmp.com/article/483782/smic-raises-us18b-ipo"
+  },
+  {
+    "id": "10",
+    "title": "AMD Opens Fab 36 – 300 mm Dresden Plant",
+    "description": "Fab 36 becomes AMD's first 300 mm fab, boosting capacity for Athlon and Opteron processors.",
+    "date": "2005-10-14",
+    "category": "Manufacturing",
+    "impact": "medium",
+    "tags": ["amd", "fab36", "dresden", "300mm"],
+    "source": "AMD",
+    "url": "https://en.wikipedia.org/wiki/AMD_Fab_36"
+  },
+  {
+    "id": "11",
+    "title": "Apple Announces Switch to Intel Processors",
+    "description": "Steve Jobs reveals that future Macs will migrate from PowerPC to Intel CPUs, reshaping the PC processor landscape.",
+    "date": "2006-01-10",
+    "category": "Business",
+    "impact": "high",
+    "tags": ["apple", "intel", "mac-transition"],
+    "source": "Apple Inc.",
+    "url": "https://en.wikipedia.org/wiki/Apple–Intel_transition"
+  },
+  {
+    "id": "12",
+    "title": "TSMC Begins 65 nm Volume Production",
+    "description": "TSMC's 65 nm node enters mass production, extending the foundry's process-leadership streak.",
+    "date": "2006-07-27",
+    "category": "Manufacturing",
+    "impact": "medium",
+    "tags": ["tsmc", "65nm", "manufacturing"],
+    "source": "TSMC",
+    "url": "https://en.wikipedia.org/wiki/TSMC"
+  },
+  {
+    "id": "13",
+    "title": "iPhone Launch – Mobile-SoC Era Begins",
+    "description": "Apple releases the first-generation iPhone, turbo-charging demand for advanced mobile processors and basebands.",
+    "date": "2007-06-29",
+    "category": "Mobile",
+    "impact": "high",
+    "tags": ["apple", "iphone", "mobile-soc"],
+    "source": "Apple Inc.",
+    "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+  },
+  {
+    "id": "14",
+    "title": "Intel Ships 45 nm Penryn with High-k Metal Gate",
+    "description": "Penryn introduces high-k / metal-gate technology, mitigating leakage and extending Moore's Law.",
+    "date": "2007-11-12",
+    "category": "Processors",
+    "impact": "high",
+    "tags": ["intel", "penryn", "high-k"],
+    "source": "Intel Corporation",
+    "url": "https://en.wikipedia.org/wiki/Penryn_(microarchitecture)"
+  },
+  {
+    "id": "15",
+    "title": "AMD Spins Off GlobalFoundries",
+    "description": "AMD and Abu Dhabi's ATIC create GlobalFoundries, birthing a new pure-play foundry competitor.",
+    "date": "2008-10-07",
+    "category": "Corporate",
+    "impact": "high",
+    "tags": ["amd", "globalfoundries", "spin-off"],
+    "source": "AMD / ATIC",
+    "url": "https://en.wikipedia.org/wiki/GlobalFoundries"
+  },
+  {
+    "id": "16",
+    "title": "TSMC Starts 40 nm Volume Production",
+    "description": "Launch of 40 nm node enables power-efficient GPUs and mobile chips, but also exposes yield challenges.",
+    "date": "2009-05-07",
+    "category": "Manufacturing",
+    "impact": "medium",
+    "tags": ["tsmc", "40nm", "manufacturing"],
+    "source": "TSMC",
+    "url": "https://en.wikipedia.org/wiki/TSMC"
+  },
+  {
+    "id": "17",
+    "title": "GlobalFoundries Acquires Chartered Semiconductor",
+    "description": "Deal transforms GlobalFoundries into the world's No. 2 foundry with a strong Singapore footprint.",
+    "date": "2010-01-13",
+    "category": "M&A",
+    "impact": "medium",
+    "tags": ["globalfoundries", "chartered", "acquisition"],
+    "source": "GlobalFoundries",
+    "url": "https://en.wikipedia.org/wiki/GlobalFoundries"
+  },
+  {
+    "id": "18",
+    "title": "Tōhoku Earthquake Disrupts Auto-Chip Supply",
+    "description": "Japan's magnitude-9.0 quake and tsunami knock out Renesas's Naka MCU fab, spotlighting supply-chain fragility.",
+    "date": "2011-03-11",
+    "category": "Supply Chain",
+    "impact": "high",
+    "tags": ["japan", "earthquake", "renesas"],
+    "source": "Renesas Electronics",
+    "url": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami"
+  },
+  {
+    "id": "19",
+    "title": "Intel Announces 22 nm 3-D Tri-Gate Transistors",
+    "description": "Intel unveils the world's first mass-production FinFETs, cutting power by up to 50 % and boosting speed.",
+    "date": "2011-05-04",
+    "category": "Technology",
+    "impact": "high",
+    "tags": ["intel", "tri-gate", "22nm"],
+    "source": "Intel Corporation",
+    "url": "https://www.intc.com/news-events/press-releases/detail/655/intel-reinvents-transistors-using-new-3-d-structure"
+  },
+  {
+    "id": "20",
+    "title": "Thailand Floods Disrupt Semiconductor & HDD Supply",
+    "description": "Historic floods wipe out key packaging and hard-disk plants, driving up component prices worldwide.",
+    "date": "2011-10-28",
+    "category": "Supply Chain",
+    "impact": "high",
+    "tags": ["thailand", "floods", "hdd", "supply-chain"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/thai-floods-batter-global-electronics-auto-supply-chains-idUSTRE79R0QR/"
+  },
+  {
+    "id": "21",
+    "title": "Intel, Samsung & TSMC Invest $6.3 Bn in ASML for EUV",
+    "description": "Chip giants buy minority stakes in ASML to accelerate EUV and 450 mm wafer R&D.",
+    "date": "2012-07-10",
+    "category": "Investment",
+    "impact": "high",
+    "tags": ["asml", "euv", "investment"],
+    "source": "ASML Holding NV",
+    "url": "https://en.wikipedia.org/wiki/ASML_Holding#2012:_Customer_investments"
+  },
+  {
+    "id": "22",
+    "title": "SK Hynix Wuxi DRAM Fab Fire",
+    "description": "Explosion and fire at Hynix's Wuxi plant removes ~15 % of global DRAM output, spiking prices.",
+    "date": "2013-09-04",
+    "category": "Supply Chain",
+    "impact": "medium",
+    "tags": ["hynix", "wuxi", "dram", "fire"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/hynix-says-fire-did-not-cripple-china-chip-making-plant-idUSL4N0H03CJ/"
+  },
+  {
+    "id": "23",
+    "title": "China Launches National IC Industry Investment Fund ('Big Fund')",
+    "description": "Beijing sets up a $21 bn state fund to turbo-charge domestic semiconductor manufacturing.",
+    "date": "2014-09-26",
+    "category": "Finance",
+    "impact": "high",
+    "tags": ["china", "big-fund", "investment"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/china-watchdog-says-is-probing-head-chip-focused-big-fund-2022-08-01/"
+  },
+  {
+    "id": "24",
     "title": "China Launches 'Made in China 2025'",
     "description": "Beijing unveils a 10-year plan to achieve chip self-sufficiency and climb the manufacturing value chain.",
     "date": "2015-05-19",
@@ -55,7 +264,7 @@
     "url": "https://english.www.gov.cn/policies/latest_releases/2015/05/19/content_281475110703534.htm"
   },
   {
-    "id": "6",
+    "id": "25",
     "title": "U.S. Blocks Broadcom–Qualcomm Deal",
     "description": "President Trump blocks Broadcom's $117 bn hostile takeover of Qualcomm on national-security grounds, marking a new era of CFIUS activism.",
     "date": "2018-03-12",
@@ -66,7 +275,7 @@
     "url": "https://corpgov.law.harvard.edu/2018/04/03/broadcoms-blocked-acquisition-of-qualcomm/"
   },
   {
-    "id": "7",
+    "id": "26",
     "title": "Huawei Added to U.S. Entity List",
     "description": "Commerce Department blacklists Huawei and 68 affiliates, cutting off access to U.S. chips and software.",
     "date": "2019-05-16",
@@ -77,9 +286,9 @@
     "url": "https://www.federalregister.gov/documents/2019/05/21/2019-10616/addition-of-entities-to-the-entity-list"
   },
   {
-    "id": "8",
+    "id": "27",
     "title": "ASML EUV Export License to China Frozen",
-    "description": "Dutch government, under U.S. pressure, halts ASML’s first EUV lithography shipment to China, denying access to leading-edge tooling.",
+    "description": "Dutch government, under U.S. pressure, halts ASML's first EUV lithography shipment to China, denying access to leading-edge tooling.",
     "date": "2019-06-01",
     "category": "Export Controls",
     "impact": "high",
@@ -88,7 +297,7 @@
     "url": "https://iep.unibocconi.eu/why-asml-eus-most-important-bargaining-chip"
   },
   {
-    "id": "9",
+    "id": "28",
     "title": "COVID-19 Triggers Global Chip Shortage",
     "description": "Pandemic demand spikes and supply disruptions create the worst semiconductor shortage in decades, affecting 169 industries worldwide.",
     "date": "2020-03-01",
@@ -99,9 +308,9 @@
     "url": "https://en.wikipedia.org/wiki/2020%E2%80%932023_global_chip_shortage"
   },
   {
-    "id": "10",
+    "id": "29",
     "title": "TSMC Announces $12 Bn Arizona Fab",
-    "description": "World’s top foundry commits to its first advanced-node fab in the U.S., kick-starting American on-shoring efforts.",
+    "description": "World's top foundry commits to its first advanced-node fab in the U.S., kick-starting American on-shoring efforts.",
     "date": "2020-05-15",
     "category": "Manufacturing",
     "impact": "high",
@@ -110,9 +319,9 @@
     "url": "https://pr.tsmc.com/english/news/2033"
   },
   {
-    "id": "11",
+    "id": "30",
     "title": "SMIC Added to U.S. Entity List",
-    "description": "Washington blacklists China’s leading foundry, cutting it off from advanced U.S. equipment and technology.",
+    "description": "Washington blacklists China's leading foundry, cutting it off from advanced U.S. equipment and technology.",
     "date": "2020-12-18",
     "category": "Export Controls",
     "impact": "high",
@@ -121,9 +330,9 @@
     "url": "https://www.federalregister.gov/documents/2020/12/22/2020-28031/addition-of-entities-to-the-entity-list-revision-of-entry-on-the-entity-list-and-removal-of-entities"
   },
   {
-    "id": "12",
+    "id": "31",
     "title": "TSMC–Sony Announce Kumamoto Fab (JASM)",
-    "description": "Japan offers subsidies for a joint specialty process fab, marking its return to front-end manufacturing.",
+    "description": "Japan offers subsidies for a joint specialty-process fab, marking its return to front-end manufacturing.",
     "date": "2021-11-09",
     "category": "Manufacturing",
     "impact": "high",
@@ -132,7 +341,7 @@
     "url": "https://pr.tsmc.com/english/news/2880"
   },
   {
-    "id": "13",
+    "id": "32",
     "title": "Intel Unveils $20 Bn Ohio Mega-Fab",
     "description": "Intel announces two new fabs in Ohio as the centerpiece of its IDM 2.0 foundry strategy.",
     "date": "2022-01-21",
@@ -143,7 +352,7 @@
     "url": "https://www.intc.com/news-events/press-releases/detail/1521/intel-announces-next-us-site-with-landmark-investment-in"
   },
   {
-    "id": "14",
+    "id": "33",
     "title": "Nvidia–Arm $40 Bn Deal Collapses",
     "description": "Regulatory pushback forces Nvidia to abandon its takeover of Arm, averting major consolidation in chip IP.",
     "date": "2022-02-07",
@@ -154,51 +363,7 @@
     "url": "https://nvidianews.nvidia.com/news/nvidia-and-softbank-group-announce-termination-of-nvidias-acquisition-of-arm-limited"
   },
   {
-    "id": "15",
-    "title": "U.S. CHIPS and Science Act Signed",
-    "description": "Creates $52.7 bn in incentives for domestic semiconductor R&D and manufacturing.",
-    "date": "2022-08-09",
-    "category": "Policy",
-    "impact": "high",
-    "tags": ["chips-act", "industrial-policy", "united-states"],
-    "source": "U.S. Congress",
-    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
-  },
-  {
-    "id": "16",
-    "title": "U.S. Issues Sweeping China Chip Export Controls",
-    "description": "Commerce Department bars advanced AI chips and 14 nm-and-below fab tools from reaching China.",
-    "date": "2022-10-07",
-    "category": "Export Controls",
-    "impact": "high",
-    "tags": ["export-controls", "china", "us-policy"],
-    "source": "U.S. BIS",
-    "url": "https://www.bis.doc.gov/index.php/documents/about-bis/newsroom/press-releases/3158-2022-10-07-bis-press-release-advanced-computing-and-semiconductor-manufacturing-controls-final/file"
-  },
-  {
-    "id": "17",
-    "title": "UK Orders Nexperia to Sell Newport Wafer Fab",
-    "description": "Using its new National Security & Investment Act, Britain forces Chinese-owned Nexperia to divest the country’s largest chip plant.",
-    "date": "2022-11-16",
-    "category": "Policy",
-    "impact": "high",
-    "tags": ["uk", "nexperia", "national-security"],
-    "source": "Reuters",
-    "url": "https://www.reuters.com/technology/uk-orders-chinas-nexperia-sell-least-86-microchip-factory-2022-11-16/"
-  },
-  {
-    "id": "18",
-    "title": "Netherlands Joins U.S.–Japan Export-Control Pact",
-    "description": "Dutch government aligns with allies to curb advanced DUV/EUV lithography exports to China.",
-    "date": "2023-03-08",
-    "category": "Export Controls",
-    "impact": "high",
-    "tags": ["netherlands", "export-controls", "asml"],
-    "source": "CSIS",
-    "url": "https://www.csis.org/analysis/japan-and-netherlands-announce-plans-new-export-controls-semiconductor-equipment"
-  },
-  {
-    "id": "19",
+    "id": "34",
     "title": "Ukraine War Halts Half of World Neon Supply",
     "description": "Invasion disrupts neon gas output vital for lithography lasers, highlighting raw-material vulnerabilities.",
     "date": "2022-03-11",
@@ -209,9 +374,53 @@
     "url": "https://www.reuters.com/technology/exclusive-ukraine-halts-half-worlds-neon-output-chips-clouding-outlook-2022-03-11/"
   },
   {
-    "id": "20",
+    "id": "35",
+    "title": "U.S. CHIPS and Science Act Signed",
+    "description": "Creates $52.7 bn in incentives for domestic semiconductor R&D and manufacturing.",
+    "date": "2022-08-09",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["chips-act", "industrial-policy", "united-states"],
+    "source": "U.S. Congress",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+  },
+  {
+    "id": "36",
+    "title": "U.S. Issues Sweeping China Chip Export Controls",
+    "description": "Commerce Department bars advanced AI chips and 14 nm-and-below fab tools from reaching China.",
+    "date": "2022-10-07",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["export-controls", "china", "us-policy"],
+    "source": "U.S. BIS",
+    "url": "https://www.bis.doc.gov/index.php/documents/about-bis/newsroom/press-releases/3158-2022-10-07-bis-press-release-advanced-computing-and-semiconductor-manufacturing-controls-final/file"
+  },
+  {
+    "id": "37",
+    "title": "UK Orders Nexperia to Sell Newport Wafer Fab",
+    "description": "Using its new National Security & Investment Act, Britain forces Chinese-owned Nexperia to divest the country's largest chip plant.",
+    "date": "2022-11-16",
+    "category": "Policy",
+    "impact": "high",
+    "tags": ["uk", "nexperia", "national-security"],
+    "source": "Reuters",
+    "url": "https://www.reuters.com/technology/uk-orders-chinas-nexperia-sell-least-86-microchip-factory-2022-11-16/"
+  },
+  {
+    "id": "38",
+    "title": "Netherlands Joins U.S.–Japan Export-Control Pact",
+    "description": "Dutch government aligns with allies to curb advanced DUV/EUV lithography exports to China.",
+    "date": "2023-03-08",
+    "category": "Export Controls",
+    "impact": "high",
+    "tags": ["netherlands", "export-controls", "asml"],
+    "source": "CSIS",
+    "url": "https://www.csis.org/analysis/japan-and-netherlands-announce-plans-new-export-controls-semiconductor-equipment"
+  },
+  {
+    "id": "39",
     "title": "TSMC Breaks Ground on 3rd Arizona Fab (2 nm Class)",
-    "description": "TSMC expands its Phoenix campus to six fabs and over $165 bn in investment, anchoring U.S.-Taiwan foundry ties.",
+    "description": "TSMC expands its Phoenix campus to six fabs and over $165 bn in investment, anchoring U.S.–Taiwan foundry ties.",
     "date": "2025-05-02",
     "category": "Manufacturing",
     "impact": "high",
