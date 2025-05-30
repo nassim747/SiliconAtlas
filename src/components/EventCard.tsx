@@ -61,9 +61,9 @@ const EventCard = ({ event, index }: EventCardProps) => {
   return (
     <div 
       className={`
-        group relative bg-white rounded-2xl shadow-lg border border-gray-100
+        group relative bg-white rounded-2xl shadow-xl border-2 border-gray-200
         transition-all duration-500 ease-out cursor-pointer
-        hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2
+        hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:border-gray-300
         ${isHovered ? 'scale-[1.02]' : ''}
       `}
       style={{
@@ -75,7 +75,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
       onClick={() => setSelectedEvent(event)}
     >
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-gray-50/50 rounded-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/30 to-gray-100/50 rounded-2xl" />
       
       {/* Content */}
       <div className="relative p-6">
@@ -93,7 +93,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
           
           {/* Date */}
           <div className="flex-shrink-0 text-right">
-            <div className="bg-gray-50 rounded-xl p-3 group-hover:bg-blue-50 transition-colors">
+            <div className="bg-gray-100 border border-gray-200 rounded-xl p-3 group-hover:bg-blue-50 group-hover:border-blue-200 transition-colors">
               <div className="text-2xl font-bold text-gray-900">{dateInfo.day}</div>
               <div className="text-sm text-gray-500">{dateInfo.month}</div>
               <div className="text-sm font-semibold text-gray-700">{dateInfo.year}</div>
@@ -112,8 +112,8 @@ const EventCard = ({ event, index }: EventCardProps) => {
             {event.tags.map((tag) => (
               <span 
                 key={tag}
-                className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-lg
-                         group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors"
+                className="px-2 py-1 text-xs font-medium bg-gray-200 text-gray-700 border border-gray-300 rounded-lg
+                         group-hover:bg-blue-100 group-hover:text-blue-800 group-hover:border-blue-200 transition-colors"
               >
                 #{highlightText(tag, filters.search)}
               </span>
@@ -156,7 +156,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
 
         {/* URL Link */}
         {event.url && (
-          <div className="mt-4 pt-4 border-t border-gray-100">
+          <div className="mt-4 pt-4 border-t-2 border-gray-200">
             <a 
               href={event.url}
               target="_blank"

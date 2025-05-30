@@ -70,10 +70,10 @@ const FilterPanel = () => {
   }
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg">
+    <div className="bg-white/95 backdrop-blur-md border-2 border-gray-300/60 rounded-2xl shadow-xl">
       {/* Header */}
       <div 
-        className="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50/50 transition-colors duration-200"
+        className="p-4 border-b-2 border-gray-200 cursor-pointer hover:bg-gray-100/80 transition-colors duration-200 bg-gray-50/30"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between">
