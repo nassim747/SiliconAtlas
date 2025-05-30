@@ -11,7 +11,8 @@ const FilterPanel = () => {
     viewMode,
     setViewMode,
     events,
-    filteredEvents
+    filteredEvents,
+    isDarkMode
   } = useTimelineStore()
 
   const [isExpanded, setIsExpanded] = useState(false)
@@ -70,15 +71,15 @@ const FilterPanel = () => {
   }
 
   return (
-    <div className="bg-white/95 backdrop-blur-md border-2 border-gray-300/60 rounded-2xl shadow-xl">
+    <div className={`backdrop-blur-md border-2 rounded-2xl shadow-xl ${isDarkMode ? 'bg-gray-800/95 border-gray-600/60' : 'bg-white/95 border-gray-300/60'}`}>
       {/* Header */}
       <div 
-        className="p-4 border-b-2 border-gray-200 cursor-pointer hover:bg-gray-100/80 transition-colors duration-200 bg-gray-50/30"
+        className={`p-4 border-b-2 cursor-pointer transition-colors duration-200 ${isDarkMode ? 'border-gray-600 bg-gray-700/30 hover:bg-gray-600/80' : 'border-gray-200 bg-gray-50/30 hover:bg-gray-100/80'}`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+            <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>Filters</h3>
             {hasActiveFilters && (
               <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">
                 {filteredEvents.length} of {events.length}
@@ -93,13 +94,15 @@ const FilterPanel = () => {
                   e.stopPropagation() // Prevent triggering the header click
                   clearFilters()
                 }}
-                className="
+                className={`
                   flex items-center space-x-1 px-3 py-1.5 text-xs font-medium 
-                  bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700
-                  border border-red-200 hover:border-red-300
-                  rounded-md transition-all duration-200
+                  rounded-md transition-all duration-200 border
                   hover:shadow-sm active:scale-95
-                "
+                  ${isDarkMode 
+                    ? 'bg-red-900/50 hover:bg-red-900/70 text-red-300 hover:text-red-200 border-red-700 hover:border-red-600' 
+                    : 'bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 border-red-200 hover:border-red-300'
+                  }
+                `}
                 title="Clear all active filters"
               >
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +114,7 @@ const FilterPanel = () => {
             
             <div className="p-1 rounded-md group-hover:bg-gray-100 transition-colors">
               <svg 
-                className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''} ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`}
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -128,10 +131,10 @@ const FilterPanel = () => {
         <div className="p-4 space-y-6">
           {/* View Mode Toggle */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className={`block text-sm font-medium mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               View Mode
             </label>
-            <div className="flex space-x-1 bg-gray-100 rounded-lg p-1">
+            <div className={`flex space-x-1 rounded-lg p-1 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
               {(['timeline', 'grid', 'list'] as const).map((mode) => (
                 <button
                   key={mode}
@@ -139,8 +142,12 @@ const FilterPanel = () => {
                   className={`
                     flex-1 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200
                     ${viewMode === mode
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-500 hover:text-gray-700'
+                      ? isDarkMode 
+                        ? 'bg-gray-600 text-gray-100 shadow-sm'
+                        : 'bg-white text-gray-900 shadow-sm'
+                      : isDarkMode
+                        ? 'text-gray-400 hover:text-gray-200'
+                        : 'text-gray-500 hover:text-gray-700'
                     }
                   `}
                 >
@@ -176,13 +183,13 @@ const FilterPanel = () => {
           {/* Date Range Filter */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 Date Range
               </label>
               {(filters.dateRange.start || filters.dateRange.end) && (
                 <button
                   onClick={clearDateRange}
-                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+                  className={`text-xs transition-colors ${isDarkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'}`}
                 >
                   Clear dates
                 </button>
@@ -191,38 +198,38 @@ const FilterPanel = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">From</label>
+                <label className={`block text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>From</label>
                 <input
                   type="date"
                   value={formatDateForInput(filters.dateRange.start)}
                   onChange={(e) => handleDateChange('start', e.target.value)}
                   min={minDate.toISOString().split('T')[0]}
                   max={filters.dateRange.end || maxDate.toISOString().split('T')[0]}
-                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-200' : 'border-gray-200'}`}
                 />
               </div>
               
               <div>
-                <label className="block text-xs text-gray-500 mb-1">To</label>
+                <label className={`block text-xs mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>To</label>
                 <input
                   type="date"
                   value={formatDateForInput(filters.dateRange.end)}
                   onChange={(e) => handleDateChange('end', e.target.value)}
                   min={filters.dateRange.start || minDate.toISOString().split('T')[0]}
                   max={maxDate.toISOString().split('T')[0]}
-                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-200' : 'border-gray-200'}`}
                 />
               </div>
             </div>
 
             {/* Date Range Display */}
             {(filters.dateRange.start || filters.dateRange.end) && (
-              <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className={`mt-3 p-3 border rounded-lg ${isDarkMode ? 'bg-blue-900/30 border-blue-700' : 'bg-blue-50 border-blue-200'}`}>
                 <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-sm text-blue-700">
+                  <span className={`text-sm ${isDarkMode ? 'text-blue-300' : 'text-blue-700'}`}>
                     {filters.dateRange.start ? new Date(filters.dateRange.start).getFullYear() : 'Start'} 
                     {' → '}
                     {filters.dateRange.end ? new Date(filters.dateRange.end).getFullYear() : 'End'}

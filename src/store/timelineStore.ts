@@ -23,6 +23,7 @@ export interface TimelineState {
   viewMode: 'timeline' | 'grid' | 'list'
   isSearchFocused: boolean
   selectedEvent: Event | null
+  isDarkMode: boolean
   
   // Actions
   setEvents: (events: Event[]) => void
@@ -34,6 +35,7 @@ export interface TimelineState {
   setViewMode: (mode: 'timeline' | 'grid' | 'list') => void
   setSearchFocused: (focused: boolean) => void
   setSelectedEvent: (event: Event | null) => void
+  toggleDarkMode: () => void
   filterEvents: () => void
 }
 
@@ -52,6 +54,7 @@ export const useTimelineStore = create<TimelineState>((set, get) => ({
   viewMode: 'timeline',
   isSearchFocused: false,
   selectedEvent: null,
+  isDarkMode: false,
 
   // Actions
   setEvents: (events) => {
@@ -110,6 +113,8 @@ export const useTimelineStore = create<TimelineState>((set, get) => ({
   setSearchFocused: (isSearchFocused) => set({ isSearchFocused }),
 
   setSelectedEvent: (selectedEvent) => set({ selectedEvent }),
+
+  toggleDarkMode: () => set(state => ({ isDarkMode: !state.isDarkMode })),
 
   filterEvents: () => {
     const { events, filters } = get()

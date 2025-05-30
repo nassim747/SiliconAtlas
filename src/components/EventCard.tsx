@@ -8,7 +8,7 @@ interface EventCardProps {
 }
 
 const EventCard = ({ event, index }: EventCardProps) => {
-  const { setSelectedEvent, filters } = useTimelineStore()
+  const { setSelectedEvent, filters, isDarkMode } = useTimelineStore()
   const [isHovered, setIsHovered] = useState(false)
 
   const getImpactColor = (impact: 'low' | 'medium' | 'high') => {
@@ -61,9 +61,12 @@ const EventCard = ({ event, index }: EventCardProps) => {
   return (
     <div 
       className={`
-        group relative bg-white rounded-2xl shadow-xl border-2 border-gray-200
-        transition-all duration-500 ease-out cursor-pointer
-        hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:border-gray-300
+        group relative rounded-2xl shadow-xl border-2 transition-all duration-500 ease-out cursor-pointer
+        hover:shadow-2xl hover:-translate-y-2
+        ${isDarkMode 
+          ? 'bg-gray-800 border-gray-600 hover:border-gray-500 hover:shadow-blue-500/10' 
+          : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-blue-500/20'
+        }
         ${isHovered ? 'scale-[1.02]' : ''}
       `}
       style={{
@@ -75,17 +78,17 @@ const EventCard = ({ event, index }: EventCardProps) => {
       onClick={() => setSelectedEvent(event)}
     >
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/30 to-gray-100/50 rounded-2xl" />
+      <div className={`absolute inset-0 rounded-2xl ${isDarkMode ? 'bg-gradient-to-br from-gray-800 via-gray-700/30 to-gray-900/50' : 'bg-gradient-to-br from-white via-gray-50/30 to-gray-100/50'}`} />
       
       {/* Content */}
       <div className="relative p-6">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1 min-w-0">
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+            <h3 className={`text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>
               {highlightText(event.title, filters.search)}
             </h3>
-            <div className="flex items-center space-x-3 text-sm text-gray-500">
+            <div className={`flex items-center space-x-3 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
               <span className={`inline-block w-3 h-3 rounded-full ${getCategoryColor(event.category)}`} />
               <span className="font-medium">{event.category}</span>
             </div>
@@ -93,16 +96,16 @@ const EventCard = ({ event, index }: EventCardProps) => {
           
           {/* Date */}
           <div className="flex-shrink-0 text-right">
-            <div className="bg-gray-100 border border-gray-200 rounded-xl p-3 group-hover:bg-blue-50 group-hover:border-blue-200 transition-colors">
-              <div className="text-2xl font-bold text-gray-900">{dateInfo.day}</div>
-              <div className="text-sm text-gray-500">{dateInfo.month}</div>
-              <div className="text-sm font-semibold text-gray-700">{dateInfo.year}</div>
+            <div className={`border rounded-xl p-3 transition-colors ${isDarkMode ? 'bg-gray-700 border-gray-600 group-hover:bg-blue-900 group-hover:border-blue-700' : 'bg-gray-100 border-gray-200 group-hover:bg-blue-50 group-hover:border-blue-200'}`}>
+              <div className={`text-2xl font-bold ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>{dateInfo.day}</div>
+              <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{dateInfo.month}</div>
+              <div className={`text-sm font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{dateInfo.year}</div>
             </div>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+        <p className={`leading-relaxed mb-4 line-clamp-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
           {highlightText(event.description, filters.search)}
         </p>
 
@@ -112,8 +115,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
             {event.tags.map((tag) => (
               <span 
                 key={tag}
-                className="px-2 py-1 text-xs font-medium bg-gray-200 text-gray-700 border border-gray-300 rounded-lg
-                         group-hover:bg-blue-100 group-hover:text-blue-800 group-hover:border-blue-200 transition-colors"
+                className={`px-2 py-1 text-xs font-medium border rounded-lg transition-colors ${isDarkMode ? 'bg-gray-700 text-gray-300 border-gray-600 group-hover:bg-blue-800 group-hover:text-blue-200 group-hover:border-blue-600' : 'bg-gray-200 text-gray-700 border-gray-300 group-hover:bg-blue-100 group-hover:text-blue-800 group-hover:border-blue-200'}`}
               >
                 #{highlightText(tag, filters.search)}
               </span>
@@ -135,18 +137,19 @@ const EventCard = ({ event, index }: EventCardProps) => {
             
             {/* Source */}
             {event.source && (
-              <span className="text-xs text-gray-400 italic">
+              <span className={`text-xs italic ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                 via {event.source}
               </span>
             )}
           </div>
 
           {/* Action Button */}
-          <button className="
+          <button className={`
             opacity-0 group-hover:opacity-100 transition-all duration-300
-            flex items-center space-x-1 text-blue-600 hover:text-blue-700
+            flex items-center space-x-1 hover:text-blue-700
             text-sm font-medium
-          ">
+            ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}
+          `}>
             <span>Learn more</span>
             <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -156,12 +159,12 @@ const EventCard = ({ event, index }: EventCardProps) => {
 
         {/* URL Link */}
         {event.url && (
-          <div className="mt-4 pt-4 border-t-2 border-gray-200">
+          <div className={`mt-4 pt-4 border-t-2 ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`}>
             <a 
               href={event.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
+              className={`inline-flex items-center space-x-2 text-sm transition-colors ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
               onClick={(e) => e.stopPropagation()}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

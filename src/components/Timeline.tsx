@@ -12,7 +12,9 @@ const Timeline = () => {
     viewMode,
     setEvents,
     selectedEvent,
-    setSelectedEvent
+    setSelectedEvent,
+    isDarkMode,
+    toggleDarkMode
   } = useTimelineStore()
 
   // Scroll state for hiding/showing search bar
@@ -130,18 +132,18 @@ const Timeline = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30">
+    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'dark bg-gray-900' : 'bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30'}`}>
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
+      <div className={`absolute inset-0 opacity-30 ${isDarkMode ? 'opacity-10' : ''}`}>
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, ${isDarkMode ? 'rgba(147, 197, 253, 0.1)' : 'rgba(59, 130, 246, 0.15)'} 1px, transparent 0)`,
           backgroundSize: '20px 20px'
         }} />
       </div>
       
       <div className="relative">
         {/* Header */}
-        <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-40 transition-all duration-300">
+        <div className={`backdrop-blur-sm border-b sticky top-0 z-40 transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 border-gray-700' : 'bg-white/80 border-gray-200/50'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`transition-all duration-300 ${isSearchVisible ? 'py-6' : 'py-2'}`}>
               <div className={`text-center transition-all duration-300 ${isSearchVisible ? 'mb-8' : 'mb-4'}`}>
@@ -149,8 +151,31 @@ const Timeline = () => {
                   <h1 className={`font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent transition-all duration-300 ${isSearchVisible ? 'text-4xl' : 'text-2xl'}`}>
                     Silicon Atlas
                   </h1>
+                  
+                  {/* Dark Mode Toggle */}
+                  <button
+                    onClick={toggleDarkMode}
+                    className={`
+                      p-2 rounded-lg transition-all duration-200 hover:scale-110
+                      ${isDarkMode 
+                        ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400' 
+                        : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                      }
+                    `}
+                    title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                  >
+                    {isDarkMode ? (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </button>
                 </div>
-                <p className={`text-gray-600 transition-all duration-300 ${isSearchVisible ? 'text-lg opacity-100' : 'text-sm opacity-70'}`}>
+                <p className={`transition-all duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} ${isSearchVisible ? 'text-lg opacity-100' : 'text-sm opacity-70'}`}>
                   Discover the pivotal moments that shaped technology
                 </p>
               </div>
@@ -193,10 +218,10 @@ const Timeline = () => {
         </div>
 
         {/* Footer */}
-        <footer className="bg-white/80 backdrop-blur-sm border-t border-gray-200/50 mt-16">
+        <footer className={`backdrop-blur-sm border-t mt-16 ${isDarkMode ? 'bg-gray-800/80 border-gray-700' : 'bg-white/80 border-gray-200/50'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="text-center">
-              <p className="text-gray-600 mb-2">
+              <p className={`mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 Created by{' '}
                 <a 
                   href="https://www.linkedin.com/in/nassim-a-265944286/"
@@ -215,12 +240,12 @@ const Timeline = () => {
                   href="https://github.com/nassim747/SiliconAtlas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    font-medium text-gray-600 hover:text-gray-800 
-                    transition-colors duration-200 
+                  className={`
+                    font-medium transition-colors duration-200 
                     hover:underline decoration-2 underline-offset-2
                     inline-flex items-center gap-1
-                  "
+                    ${isDarkMode ? 'text-gray-300 hover:text-gray-100' : 'text-gray-600 hover:text-gray-800'}
+                  `}
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -228,7 +253,7 @@ const Timeline = () => {
                   View Source
                 </a>
               </p>
-              <p className="text-sm text-gray-500">
+              <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 Discover the pivotal moments that shaped semiconductors
               </p>
             </div>
