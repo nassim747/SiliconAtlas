@@ -143,14 +143,14 @@ const Timeline = () => {
         {/* Header */}
         <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-40 transition-all duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`transition-all duration-300 ${isSearchVisible ? 'py-6' : 'py-4'}`}>
-              <div className="text-center mb-8">
+            <div className={`transition-all duration-300 ${isSearchVisible ? 'py-6' : 'py-2'}`}>
+              <div className={`text-center transition-all duration-300 ${isSearchVisible ? 'mb-8' : 'mb-4'}`}>
                 <div className="flex items-center justify-center gap-4 mb-2">
-                  <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  <h1 className={`font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent transition-all duration-300 ${isSearchVisible ? 'text-4xl' : 'text-2xl'}`}>
                     Silicon Atlas
                   </h1>
                 </div>
-                <p className="text-gray-600 text-lg">
+                <p className={`text-gray-600 transition-all duration-300 ${isSearchVisible ? 'text-lg opacity-100' : 'text-sm opacity-70'}`}>
                   Discover the pivotal moments that shaped technology
                 </p>
               </div>
