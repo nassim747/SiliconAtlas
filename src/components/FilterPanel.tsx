@@ -7,6 +7,7 @@ const FilterPanel = () => {
     toggleCategory, 
     toggleImpact, 
     clearFilters,
+    setDateRange,
     viewMode,
     setViewMode,
     events,
@@ -19,10 +20,17 @@ const FilterPanel = () => {
   const categories = Array.from(new Set(events.map(event => event.category)))
   const impacts: ('low' | 'medium' | 'high')[] = ['low', 'medium', 'high']
 
+  // Get min and max dates from events for date input bounds
+  const eventDates = events.map(event => new Date(event.date))
+  const minDate = eventDates.length > 0 ? new Date(Math.min(...eventDates.map(d => d.getTime()))) : new Date()
+  const maxDate = eventDates.length > 0 ? new Date(Math.max(...eventDates.map(d => d.getTime()))) : new Date()
+
   const hasActiveFilters = 
     filters.categories.length > 0 || 
     filters.impact.length > 0 ||
-    filters.search.length > 0
+    filters.search.length > 0 ||
+    filters.dateRange.start ||
+    filters.dateRange.end
 
   const getImpactColor = (impact: 'low' | 'medium' | 'high') => {
     switch (impact) {
@@ -42,6 +50,23 @@ const FilterPanel = () => {
       'bg-orange-100 text-orange-700 border-orange-200',
     ]
     return colors[index % colors.length]
+  }
+
+  const handleDateChange = (field: 'start' | 'end', value: string) => {
+    if (field === 'start') {
+      setDateRange(value || undefined, filters.dateRange.end)
+    } else {
+      setDateRange(filters.dateRange.start, value || undefined)
+    }
+  }
+
+  const clearDateRange = () => {
+    setDateRange(undefined, undefined)
+  }
+
+  const formatDateForInput = (dateString?: string) => {
+    if (!dateString) return ''
+    return dateString.split('T')[0] // Convert to YYYY-MM-DD format
   }
 
   return (
@@ -86,7 +111,7 @@ const FilterPanel = () => {
       </div>
 
       {/* Content */}
-      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-0'}`}>
+      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[600px]' : 'max-h-0'}`}>
         <div className="p-4 space-y-6">
           {/* View Mode Toggle */}
           <div>
@@ -133,6 +158,65 @@ const FilterPanel = () => {
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Date Range Filter */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <label className="block text-sm font-medium text-gray-700">
+                Date Range
+              </label>
+              {(filters.dateRange.start || filters.dateRange.end) && (
+                <button
+                  onClick={clearDateRange}
+                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  Clear dates
+                </button>
+              )}
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">From</label>
+                <input
+                  type="date"
+                  value={formatDateForInput(filters.dateRange.start)}
+                  onChange={(e) => handleDateChange('start', e.target.value)}
+                  min={minDate.toISOString().split('T')[0]}
+                  max={filters.dateRange.end || maxDate.toISOString().split('T')[0]}
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">To</label>
+                <input
+                  type="date"
+                  value={formatDateForInput(filters.dateRange.end)}
+                  onChange={(e) => handleDateChange('end', e.target.value)}
+                  min={filters.dateRange.start || minDate.toISOString().split('T')[0]}
+                  max={maxDate.toISOString().split('T')[0]}
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                />
+              </div>
+            </div>
+
+            {/* Date Range Display */}
+            {(filters.dateRange.start || filters.dateRange.end) && (
+              <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-sm text-blue-700">
+                    {filters.dateRange.start ? new Date(filters.dateRange.start).getFullYear() : 'Start'} 
+                    {' → '}
+                    {filters.dateRange.end ? new Date(filters.dateRange.end).getFullYear() : 'End'}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Categories Filter */}
@@ -203,6 +287,18 @@ const FilterPanel = () => {
             )}
             {filters.search && (
               <span>Search active</span>
+            )}
+            {(filters.dateRange.start || filters.dateRange.end) && (
+              <span className="flex items-center space-x-1">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>
+                  {filters.dateRange.start ? new Date(filters.dateRange.start).getFullYear() : 'Start'} 
+                  {' → '}
+                  {filters.dateRange.end ? new Date(filters.dateRange.end).getFullYear() : 'End'}
+                </span>
+              </span>
             )}
           </div>
         </div>
