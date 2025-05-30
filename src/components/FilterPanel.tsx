@@ -93,9 +93,19 @@ const FilterPanel = () => {
                   e.stopPropagation() // Prevent triggering the header click
                   clearFilters()
                 }}
-                className="text-sm text-gray-500 hover:text-gray-700 transition-colors px-2 py-1 rounded hover:bg-white"
+                className="
+                  flex items-center space-x-1 px-3 py-1.5 text-xs font-medium 
+                  bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700
+                  border border-red-200 hover:border-red-300
+                  rounded-md transition-all duration-200
+                  hover:shadow-sm active:scale-95
+                "
+                title="Clear all active filters"
               >
-                Clear all
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Clear all</span>
               </button>
             )}
             
