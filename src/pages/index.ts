@@ -1,2 +1,2 @@
 // Pages index - placeholder file to ensure Git tracks the directory
-export {}; 
+export { default as Home } from './Home' 

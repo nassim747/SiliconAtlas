@@ -143,7 +143,7 @@ const Timeline = () => {
       
       <div className="relative">
         {/* Header */}
-        <div className={`backdrop-blur-sm border-b sticky top-0 z-40 transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 border-gray-700' : 'bg-white/80 border-gray-200/50'}`}>
+        <div className={`backdrop-blur-sm border-b sticky top-16 z-40 transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 border-gray-700' : 'bg-white/80 border-gray-200/50'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`transition-all duration-300 ${isSearchVisible ? 'py-6' : 'py-2'}`}>
               <div className={`text-center transition-all duration-300 ${isSearchVisible ? 'mb-8' : 'mb-4'}`}>
