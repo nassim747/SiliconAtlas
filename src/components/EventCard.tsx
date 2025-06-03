@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Event } from '../types/Event'
 import { useTimelineStore } from '../store/timelineStore'
+import { highlightText } from '../utils/highlightText'
 
 interface EventCardProps {
   event: Event
@@ -32,20 +33,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
     return colors[hash % colors.length]
   }
 
-  const highlightText = (text: string, search: string) => {
-    if (!search) return text
-    
-    const regex = new RegExp(`(${search})`, 'gi')
-    const parts = text.split(regex)
-    
-    return parts.map((part, i) => 
-      regex.test(part) ? (
-        <mark key={i} className="bg-yellow-200 text-yellow-900 rounded px-1">
-          {part}
-        </mark>
-      ) : part
-    )
-  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
