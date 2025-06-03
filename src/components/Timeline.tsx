@@ -176,7 +176,7 @@ const Timeline = () => {
                   </button>
                 </div>
                 <p className={`transition-all duration-300 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} ${isSearchVisible ? 'text-lg opacity-100' : 'text-sm opacity-70'}`}>
-                  Discover the pivotal moments that shaped technology
+                  Discover the pivotal moments that shaped the semiconductor industry
                 </p>
               </div>
               
@@ -254,7 +254,7 @@ const Timeline = () => {
                 </a>
               </p>
               <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                Discover the pivotal moments that shaped semiconductors
+                Discover the pivotal moments that shaped the semiconductor industry
               </p>
             </div>
           </div>

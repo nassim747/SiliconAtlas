@@ -4,13 +4,15 @@ import { highlightText } from './highlightText'
 
 describe('highlightText', () => {
   it('escapes regex characters in search string', () => {
-    const result = highlightText('a.c', 'a.c') as (string | JSX.Element)[]
+    const result = highlightText('a.c', 'a.c')
     const mark = result.find((el) => React.isValidElement(el))
     expect(mark).toBeTruthy()
-    expect(mark.props.children).toBe('a.c')
+    if (React.isValidElement(mark)) {
+      expect((mark.props as any).children).toBe('a.c')
+    }
   })
   it('does not treat regex chars specially', () => {
-    const result = highlightText('abc', 'a.c') as (string | JSX.Element)[]
+    const result = highlightText('abc', 'a.c')
     const mark = result.find((el) => React.isValidElement(el))
     expect(mark).toBeUndefined()
   })
