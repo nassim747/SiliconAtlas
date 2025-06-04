@@ -5,15 +5,15 @@ import { highlightText } from './highlightText'
 describe('highlightText', () => {
   it('escapes regex characters in search string', () => {
     const result = highlightText('a.c', 'a.c')
-    const mark = result.find((el) => React.isValidElement(el))
+    const mark = result.find((el): el is React.ReactElement => React.isValidElement(el))
     expect(mark).toBeTruthy()
-    if (React.isValidElement(mark)) {
-      expect((mark.props as { children: string }).children).toBe('a.c')
+    if (mark && React.isValidElement(mark)) {
+      expect((mark.props as React.PropsWithChildren<{}>).children).toBe('a.c')
     }
   })
   it('does not treat regex chars specially', () => {
     const result = highlightText('abc', 'a.c')
-    const mark = result.find((el) => React.isValidElement(el))
+    const mark = result.find((el): el is React.ReactElement => React.isValidElement(el))
     expect(mark).toBeUndefined()
   })
 })

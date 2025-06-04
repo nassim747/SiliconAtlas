@@ -3,7 +3,7 @@ import React, { type ReactNode } from 'react'
 export const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 export const highlightText = (text: string, search: string): ReactNode[] => {
-  if (!search) return [text]
+  if (!search) return [text as ReactNode]
   const regex = new RegExp(`(${escapeRegExp(search)})`, 'gi')
   const parts = text.split(regex)
   return parts.map((part, i) =>
@@ -12,7 +12,7 @@ export const highlightText = (text: string, search: string): ReactNode[] => {
         {part}
       </mark>
     ) : (
-      part
+      part as ReactNode
     )
   )
 }
