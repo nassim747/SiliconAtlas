@@ -1,0 +1,49 @@
+{
+    "nodes": [
+      {
+        "id": "apple-hq",
+        "name": "Apple Park (Design HQ)",
+        "company": "Apple",
+        "type": "design",
+        "lat": 37.3349,
+        "lng": -122.0090,
+        "country": "USA"
+      },
+      {
+        "id": "tsmc-fab18b",
+        "name": "TSMC Fab 18B (3 nm)",
+        "company": "TSMC",
+        "type": "fab",
+        "process_nm": 3,
+        "lat": 22.984,
+        "lng": 120.227,
+        "country": "Taiwan",
+        "source": "Apple reserved most of TSMC’s 3 nm capacity for the A17 Pro launch."
+      },
+      {
+        "id": "ase-k28",
+        "name": "ASE Kaohsiung (Advanced Packaging)",
+        "company": "ASE Group",
+        "type": "packaging",
+        "lat": 22.758,
+        "lng": 120.300,
+        "country": "Taiwan"
+      },
+      {
+        "id": "foxconn-zhengzhou",
+        "name": "Foxconn Zhengzhou (iPhone Assembly)",
+        "company": "Hon Hai / Foxconn",
+        "type": "assembly",
+        "lat": 34.757,
+        "lng": 113.648,
+        "country": "China"
+      }
+    ],
+  
+    "flows": [
+      { "from": "apple-hq",        "to": "tsmc-fab18b",     "label": "Design → Wafer Fab" },
+      { "from": "tsmc-fab18b",     "to": "ase-k28",         "label": "Wafers → Packaging" },
+      { "from": "ase-k28",         "to": "foxconn-zhengzhou","label": "Packaged Dies → Final Assembly" }
+    ]
+  }
+  

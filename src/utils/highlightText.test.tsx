@@ -8,7 +8,7 @@ describe('highlightText', () => {
     const mark = result.find((el) => React.isValidElement(el))
     expect(mark).toBeTruthy()
     if (React.isValidElement(mark)) {
-      expect((mark.props as any).children).toBe('a.c')
+      expect((mark.props as { children: string }).children).toBe('a.c')
     }
   })
   it('does not treat regex chars specially', () => {
