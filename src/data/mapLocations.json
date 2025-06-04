@@ -1,0 +1,195 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tsmc-hq",
+        "name": "TSMC Headquarters",
+        "company": "Taiwan Semiconductor Manufacturing Company",
+        "type": "HQ",
+        "address": "Hsinchu, Taiwan",
+        "description": "World's largest semiconductor foundry headquarters"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.9738819, 24.7803504]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "intel-hq",
+        "name": "Intel Headquarters",
+        "company": "Intel Corporation",
+        "type": "HQ",
+        "address": "Santa Clara, California",
+        "description": "Leading semiconductor and processor manufacturer headquarters"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.9763428, 37.3894394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "samsung-hq",
+        "name": "Samsung Electronics Headquarters",
+        "company": "Samsung Electronics",
+        "type": "HQ",
+        "address": "Suwon, South Korea",
+        "description": "Major memory and processor manufacturer headquarters"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.0263767, 37.2636063]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tsmc-fab18",
+        "name": "Fab 18",
+        "company": "TSMC",
+        "type": "FAB",
+        "address": "Tainan, Taiwan",
+        "process_nm": "3nm, 5nm",
+        "status": "Production",
+        "description": "Advanced logic manufacturing facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.1873, 22.9071]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "intel-d1x",
+        "name": "D1X Fab",
+        "company": "Intel",
+        "type": "FAB",
+        "address": "Hillsboro, Oregon",
+        "process_nm": "10nm, 7nm",
+        "status": "Production",
+        "description": "Intel's advanced process development facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.8874, 45.5426]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "samsung-s3",
+        "name": "S3 Line",
+        "company": "Samsung",
+        "type": "FAB",
+        "address": "Hwaseong, South Korea",
+        "process_nm": "3nm, 4nm",
+        "status": "Production",
+        "description": "Samsung's leading-edge logic production line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.8159, 37.1982]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "globalfoundries-fab8",
+        "name": "Fab 8",
+        "company": "GlobalFoundries",
+        "type": "FAB",
+        "address": "Malta, New York",
+        "process_nm": "14nm, 12nm",
+        "status": "Production",
+        "description": "GlobalFoundries' advanced technology facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.8038, 42.8142]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tsmc-arizona",
+        "name": "Arizona Fab",
+        "company": "TSMC",
+        "type": "FAB",
+        "address": "Phoenix, Arizona",
+        "process_nm": "4nm, 5nm",
+        "status": "Under Construction",
+        "description": "TSMC's first advanced US manufacturing facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.073844, 33.448457]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tsmc-rd",
+        "name": "TSMC R&D Center",
+        "company": "TSMC",
+        "type": "R&D",
+        "address": "Hsinchu, Taiwan",
+        "description": "Advanced semiconductor research and development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.9938, 24.7821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "intel-rd",
+        "name": "Intel Labs",
+        "company": "Intel",
+        "type": "R&D",
+        "address": "Hillsboro, Oregon",
+        "description": "Intel's primary research and development facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.8901, 45.5489]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "imec-rd",
+        "name": "IMEC Research Center",
+        "company": "IMEC",
+        "type": "R&D",
+        "address": "Leuven, Belgium",
+        "description": "Leading nanoelectronics and digital technologies research"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.6751, 50.8648]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "applied-materials-rd",
+        "name": "Applied Materials R&D",
+        "company": "Applied Materials",
+        "type": "R&D",
+        "address": "Sunnyvale, California",
+        "description": "Semiconductor equipment and materials research"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.0312, 37.3688]
+      }
+    }
+  ]
+} 

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Timeline from './components/Timeline'
+import InteractiveMap from './components/InteractiveMap'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/timeline" element={<Timeline />} />
-          <Route path="/map" element={<div className="pt-20 text-center">Interactive Map - Coming Soon!</div>} />
+          <Route path="/map" element={<InteractiveMap />} />
         </Routes>
       </div>
     </Router>

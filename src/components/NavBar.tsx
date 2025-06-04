@@ -57,12 +57,17 @@ const NavBar = () => {
 
             <Link
               to="/map"
-              className={`px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md opacity-50 cursor-not-allowed ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-500'
+              className={`px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
+                isActive('/map') 
+                  ? isDarkMode 
+                    ? 'text-blue-400 bg-blue-900/30' 
+                    : 'text-blue-600 bg-blue-50'
+                  : isDarkMode
+                    ? 'text-gray-300 hover:text-gray-100'
+                    : 'text-gray-600 hover:text-gray-900'
               }`}
-              onClick={(e) => e.preventDefault()}
             >
-              Map <span className="text-xs">(Soon)</span>
+              Map
             </Link>
 
             {/* Dark Mode Toggle */}
