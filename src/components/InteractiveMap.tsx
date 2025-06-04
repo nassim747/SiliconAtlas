@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { Deck } from '@deck.gl/core'
 import { ArcLayer } from '@deck.gl/layers'
 import { MapboxOverlay } from '@deck.gl/mapbox'
 import { useTimelineStore } from '../store/timelineStore'
 import type { MapLocationCollection, LayerVisibility, MapLocationProperties } from '../types/MapLocation'
-import type { PathwayData, PathwayOption, PathwayNode } from '../types/PathwayData'
+import type { PathwayData, PathwayOption } from '../types/PathwayData'
 import mapLocations from '../data/mapLocations.json'
 import pathwayData from '../data/sites_and_flows.json'
 
