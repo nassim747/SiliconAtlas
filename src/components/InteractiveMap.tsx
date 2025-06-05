@@ -10,6 +10,15 @@ import mapLocations from '../data/mapLocations.json'
 import pathwayData from '../data/sites_and_flows.json'
 
 // Set Mapbox access token
+console.log('Environment check:', {
+  hasViteMapboxToken: !!import.meta.env.VITE_MAPBOX_TOKEN,
+  tokenValue: import.meta.env.VITE_MAPBOX_TOKEN ? 'Set (hidden)' : 'Not set',
+  fallbackToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3kifQ.rJcFIG214AriISLbB6B5aw',
+  isDevelopment: import.meta.env.DEV,
+  isProduction: import.meta.env.PROD,
+  mode: import.meta.env.MODE
+})
+
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN || 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3kifQ.rJcFIG214AriISLbB6B5aw'
 
 const InteractiveMap = () => {
@@ -599,9 +608,18 @@ const InteractiveMap = () => {
 
       {/* Environment Token Warning */}
       {!import.meta.env.VITE_MAPBOX_TOKEN && (
-        <div className="absolute bottom-4 left-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg text-yellow-800 text-sm z-10">
+        <div className="absolute bottom-4 left-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg text-yellow-800 text-sm z-10 max-w-sm">
           <div className="font-medium">Mapbox Token Missing</div>
-          <div>Add VITE_MAPBOX_TOKEN to your .env file</div>
+          <div className="text-xs mt-1">
+            {import.meta.env.DEV ? (
+              <>Add VITE_MAPBOX_TOKEN to your .env.local file</>
+            ) : (
+              <>Configure VITE_MAPBOX_TOKEN in your deployment platform's environment variables</>
+            )}
+          </div>
+          <div className="text-xs mt-2 opacity-75">
+            Mode: {import.meta.env.MODE} | Using fallback token
+          </div>
         </div>
       )}
     </div>
