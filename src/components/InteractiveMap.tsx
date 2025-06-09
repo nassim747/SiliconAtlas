@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { ArcLayer } from '@deck.gl/layers'
-import { MapboxOverlay } from '@deck.gl/mapbox'
 import { useTimelineStore } from '../store/timelineStore'
 import type { MapLocationCollection, LayerVisibility, MapLocationProperties } from '../types/MapLocation'
-import type { PathwayData, PathwayOption } from '../types/PathwayData'
 import mapLocations from '../data/mapLocations.json'
-import pathwayData from '../data/sites_and_flows.json'
 
 // Set Mapbox access token
 console.log('Environment check:', {
@@ -25,7 +21,6 @@ const InteractiveMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
   const popup = useRef<mapboxgl.Popup | null>(null)
-  const deckOverlay = useRef<MapboxOverlay | null>(null)
   const { isDarkMode } = useTimelineStore()
   
   const [layerVisibility, setLayerVisibility] = useState<LayerVisibility>({
@@ -34,16 +29,7 @@ const InteractiveMap = () => {
     'R&D': true
   })
 
-  const [selectedPathway, setSelectedPathway] = useState<string>('none')
-
   const locations = mapLocations as MapLocationCollection
-  const pathways: PathwayOption[] = [
-    {
-      id: 'apple-a17',
-      name: 'Apple A17 (2023)',
-      data: pathwayData as PathwayData
-    }
-  ]
 
   // Initialize map
   useEffect(() => {
@@ -60,12 +46,6 @@ const InteractiveMap = () => {
     map.current.on('load', () => {
       if (!map.current) return
 
-      // Initialize deck.gl overlay
-      deckOverlay.current = new MapboxOverlay({
-        interleaved: true
-      })
-      map.current.addControl(deckOverlay.current)
-
       // Add location data as source
       map.current.addSource('locations', {
         type: 'geojson',
@@ -73,34 +53,6 @@ const InteractiveMap = () => {
         cluster: true,
         clusterMaxZoom: 6,
         clusterRadius: 50
-      })
-
-      // Add pathway nodes as source
-      const pathwayGeoJSON = {
-        type: 'FeatureCollection' as const,
-        features: pathwayData.nodes.map(node => ({
-          type: 'Feature' as const,
-          properties: {
-            id: node.id,
-            name: node.name,
-            company: node.company,
-            type: node.type.toUpperCase(),
-            address: node.country,
-            description: `${node.type} facility in ${node.country}`,
-            process_nm: node.process_nm,
-            source: node.source
-          },
-          geometry: {
-            type: 'Point' as const,
-            coordinates: [node.lng, node.lat]
-          }
-        }))
-      }
-
-      map.current.addSource('pathway-nodes', {
-        type: 'geojson',
-        data: pathwayGeoJSON,
-        cluster: false
       })
 
       // Add cluster layer
@@ -261,72 +213,6 @@ const InteractiveMap = () => {
         })
       })
 
-      // Add pathway node layers
-      const pathwayColors = {
-        DESIGN: '#9b59b6',
-        FAB: '#e74c3c', 
-        PACKAGING: '#f39c12',
-        ASSEMBLY: '#2ecc71'
-      }
-
-      Object.keys(pathwayColors).forEach(type => {
-        map.current!.addLayer({
-          id: `pathway-point-${type}`,
-          type: 'circle',
-          source: 'pathway-nodes',
-          filter: ['==', ['get', 'type'], type],
-          paint: {
-            'circle-color': pathwayColors[type as keyof typeof pathwayColors],
-            'circle-radius': 10,
-            'circle-stroke-width': 3,
-            'circle-stroke-color': '#fff',
-            'circle-opacity': 0.8
-          },
-          layout: {
-            'visibility': 'none'
-          }
-        })
-
-        // Add pathway node interactions
-        map.current!.on('click', `pathway-point-${type}`, (e: mapboxgl.MapMouseEvent) => {
-          if (!map.current || !e.features?.[0]) return
-          
-          const feature = e.features[0]
-          const properties = feature.properties as any
-          const coordinates = (feature.geometry as any).coordinates.slice()
-
-          if (popup.current) {
-            popup.current.remove()
-          }
-
-          const popupContent = `
-            <div class="p-2 min-w-[250px]">
-              <div class="flex items-center gap-2 mb-2">
-                <div class="w-3 h-3 rounded-full" style="background-color: ${pathwayColors[type as keyof typeof pathwayColors]}"></div>
-                <span class="font-bold text-gray-900 dark:text-gray-100">${properties.name}</span>
-              </div>
-              <div class="space-y-1 text-sm">
-                <div><span class="font-medium">Company:</span> ${properties.company}</div>
-                <div><span class="font-medium">Type:</span> ${properties.type}</div>
-                <div><span class="font-medium">Location:</span> ${properties.address}</div>
-                ${properties.process_nm ? `<div><span class="font-medium">Process:</span> ${properties.process_nm}nm</div>` : ''}
-                ${properties.source ? `<div class="text-gray-600 dark:text-gray-400 mt-2">${properties.source}</div>` : ''}
-                <div class="text-gray-600 dark:text-gray-400 mt-2">${properties.description}</div>
-              </div>
-            </div>
-          `
-
-          popup.current = new mapboxgl.Popup({
-            closeButton: true,
-            closeOnClick: true,
-            offset: 15
-          })
-            .setLngLat(coordinates)
-            .setHTML(popupContent)
-            .addTo(map.current)
-        })
-      })
-
       // Handle cluster clicks
       map.current.on('click', 'clusters', (e: mapboxgl.MapMouseEvent) => {
         if (!map.current || !e.features?.[0]) return
@@ -391,92 +277,6 @@ const InteractiveMap = () => {
     })
   }, [layerVisibility])
 
-  // Update pathway visualization
-  useEffect(() => {
-    if (!map.current || !deckOverlay.current) return
-
-    const isPathwayActive = selectedPathway !== 'none'
-    const selectedPathwayData = pathways.find(p => p.id === selectedPathway)
-
-    // Update regular location opacity
-    const locationTypes = ['FAB', 'HQ', 'R&D']
-    locationTypes.forEach(type => {
-      const layerId = `unclustered-point-${type}`
-      if (map.current!.getLayer(layerId)) {
-        map.current!.setPaintProperty(layerId, 'circle-opacity', isPathwayActive ? 0.2 : 0.8)
-      }
-    })
-
-    // Update cluster opacity
-    if (map.current!.getLayer('clusters')) {
-      map.current!.setPaintProperty('clusters', 'circle-opacity', isPathwayActive ? 0.2 : 0.8)
-    }
-
-    // Update pathway node visibility
-    const pathwayTypes = ['DESIGN', 'FAB', 'PACKAGING', 'ASSEMBLY']
-    pathwayTypes.forEach(type => {
-      const layerId = `pathway-point-${type}`
-      if (map.current!.getLayer(layerId)) {
-        map.current!.setLayoutProperty(layerId, 'visibility', isPathwayActive ? 'visible' : 'none')
-      }
-    })
-
-    // Update deck.gl arcs
-    if (isPathwayActive && selectedPathwayData) {
-      const nodeMap = new Map(selectedPathwayData.data.nodes.map(node => [node.id, node]))
-      
-      const arcData = selectedPathwayData.data.flows.map(flow => {
-        const fromNode = nodeMap.get(flow.from)
-        const toNode = nodeMap.get(flow.to)
-        
-        return {
-          from: [fromNode!.lng, fromNode!.lat],
-          to: [toNode!.lng, toNode!.lat],
-          label: flow.label
-        }
-      })
-
-      const arcLayer = new ArcLayer({
-        id: 'pathway-arcs',
-        data: arcData,
-        getSourcePosition: (d: any) => d.from,
-        getTargetPosition: (d: any) => d.to,
-        getSourceColor: [255, 140, 0],
-        getTargetColor: [255, 140, 0], 
-        getWidth: 3,
-        pickable: true,
-        onHover: (info: any) => {
-          if (info.object && popup.current) {
-            popup.current.remove()
-          }
-          
-          if (info.object) {
-            popup.current = new mapboxgl.Popup({
-              closeButton: false,
-              closeOnClick: false,
-              offset: 15
-            })
-              .setLngLat(info.coordinate)
-              .setHTML(`
-                <div class="font-medium text-gray-900 dark:text-gray-100">
-                  ${info.object.label}
-                </div>
-              `)
-              .addTo(map.current!)
-          }
-        }
-      })
-
-      deckOverlay.current.setProps({
-        layers: [arcLayer]
-      })
-    } else {
-      deckOverlay.current.setProps({
-        layers: []
-      })
-    }
-  }, [selectedPathway])
-
   const toggleLayerVisibility = (type: keyof LayerVisibility) => {
     setLayerVisibility(prev => ({
       ...prev,
@@ -518,39 +318,6 @@ const InteractiveMap = () => {
     <div className="relative w-full h-screen">
       {/* Map Container */}
       <div ref={mapContainer} className="w-full h-full" />
-      
-      {/* Pathway Explorer Dropdown */}
-      <div className={`absolute top-4 left-4 p-4 rounded-lg shadow-lg backdrop-blur-sm border z-10 ${isDarkMode ? 'bg-gray-800/90 border-gray-600' : 'bg-white/90 border-gray-300'}`}>
-        <h3 className={`text-sm font-semibold mb-3 ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
-          Pathway Explorer
-        </h3>
-        
-        <div className="space-y-2">
-          <label className={`block text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-            Select pathway
-          </label>
-          <select
-            value={selectedPathway}
-            onChange={(e) => setSelectedPathway(e.target.value)}
-            className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-200' : 'bg-white border-gray-200 text-gray-900'}`}
-          >
-            <option value="none">None</option>
-            {pathways.map(pathway => (
-              <option key={pathway.id} value={pathway.id}>
-                {pathway.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {selectedPathway !== 'none' && (
-          <div className={`mt-3 text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            <div>• Orange arcs show supply flow</div>
-            <div>• Hover arcs for details</div>
-            <div>• Other sites are dimmed</div>
-          </div>
-        )}
-      </div>
       
       {/* Floating Control Panel */}
       <div className={`absolute top-4 right-4 p-4 rounded-lg shadow-lg backdrop-blur-sm border z-10 ${isDarkMode ? 'bg-gray-800/90 border-gray-600' : 'bg-white/90 border-gray-300'}`}>
